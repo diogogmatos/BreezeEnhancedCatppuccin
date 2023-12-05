@@ -230,16 +230,16 @@ namespace Breeze
                         if (d && qGray(d->titleBarColor().rgb()) > 100)
                         {
                             grad.setColorAt(0, isInactive ? inactiveCol
-                                                          : QColor(255, 92, 87));
+                                                          : QColor(243, 139, 168));
                             grad.setColorAt(1, isInactive ? inactiveCol
-                                                          : QColor(233, 84, 79));
+                                                          : QColor(243, 139, 168));
                         }
                         else
                         {
                             grad.setColorAt(0, isInactive ? inactiveCol
-                                                          : QColor(250, 100, 102));
+                                                          : QColor(243, 139, 168));
                             grad.setColorAt(1, isInactive ? inactiveCol
-                                                          : QColor(230, 92, 94));
+                                                          : QColor(243, 139, 168));
                         }
                         painter->setBrush( QBrush(grad) );
                         painter->setPen( Qt::NoPen );
@@ -278,24 +278,24 @@ namespace Breeze
                         if (d && qGray(d->titleBarColor().rgb()) > 100)
                         {
                             grad.setColorAt(0, isChecked() ? isInactive ? inactiveCol
-                                                                        : QColor(67, 198, 176)
+                                                                        : QColor(166, 227, 161)
                                                            : isInactive ? inactiveCol
-                                                                        : QColor(40, 211, 63));
+                                                                        : QColor(166, 227, 161));
                             grad.setColorAt(1, isChecked() ? isInactive ? inactiveCol
-                                                                        : QColor(60, 178, 159)
+                                                                        : QColor(166, 227, 161)
                                                            : isInactive ? inactiveCol
-                                                                        : QColor(36, 191, 57));
+                                                                        : QColor(166, 227, 161));
                         }
                         else
                         {
                             grad.setColorAt(0, isChecked() ? isInactive ? inactiveCol
-                                                                        : QColor(67, 198, 176)
+                                                                        : QColor(166, 227, 161)
                                                            : isInactive ? inactiveCol
-                                                                        : QColor(124, 198, 67));
+                                                                        : QColor(166, 227, 161));
                             grad.setColorAt(1, isChecked() ? isInactive ? inactiveCol
-                                                                        : QColor(60, 178, 159)
+                                                                        : QColor(166, 227, 161)
                                                            : isInactive ? inactiveCol
-                                                                        : QColor(111, 178, 60));
+                                                                        : QColor(166, 227, 161));
                         }
                         painter->setBrush( QBrush(grad) );
                         painter->setPen( Qt::NoPen );
@@ -346,16 +346,16 @@ namespace Breeze
                         if (d && qGray(d->titleBarColor().rgb()) > 100)
                         { // yellow isn't good with light backgrounds
                             grad.setColorAt(0, isInactive ? inactiveCol
-                                                          : QColor(243, 176, 43));
+                                                          : QColor(249, 226, 175));
                             grad.setColorAt(1, isInactive ? inactiveCol
-                                                          : QColor(223, 162, 39));
+                                                          : QColor(249, 226, 175));
                         }
                         else
                         {
                             grad.setColorAt(0, isInactive ? inactiveCol
-                                                          : QColor(237, 198, 81));
+                                                          : QColor(249, 226, 175));
                             grad.setColorAt(1, isInactive ? inactiveCol
-                                                          : QColor(217, 181, 74));
+                                                          : QColor(249, 226, 175));
                         }
                         painter->setBrush( QBrush(grad) );
                         painter->setPen( Qt::NoPen );
