@@ -1,5 +1,8 @@
 # BreezeEnhanced
 
+> [!IMPORTANT]
+> This is a fork of [BreezeEnhanced](https://github.com/tsujan/BreezeEnhanced) that changes the colors of the **Close**, **Maximize** and **Minimize** buttons to match the [Catppuccin](https://github.com/catppuccin/catppuccin) color scheme. It works very well with the [Catppuccin KDE Theme](https://github.com/catppuccin/kde) and it **fixes the famous rounded corners bug (blur not respecting the rounded corners and 'leaking')**.
+
 ## Overview
 
 BreezeEnhanced is a fork of KDE Breeze decoration with the following changes:
