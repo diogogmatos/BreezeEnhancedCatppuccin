@@ -1,3 +1,8 @@
+V6.5
+---------
+ * Bumped the version to 6.5.
+ * Added an option for round bottom corners with no borders.
+
 V6.4
 ---------
  * Bumped the version to 6.4 and imported some changes from Breeze 6.4.0.

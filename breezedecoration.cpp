@@ -399,6 +399,20 @@ namespace Breeze
         }
 
         setResizeOnlyBorders(QMargins(extSides, 0, extSides, extBottom));
+
+        qreal bottomLeftRadius = 0;
+        qreal bottomRightRadius = 0;
+        if (!hideTitleBar() && hasNoBorders() && m_internalSettings->roundedCorners())
+        {
+            if (!isBottomEdge())
+            {
+                if (!isLeftEdge())
+                    bottomLeftRadius = m_scaledCornerRadius;
+                if (!isRightEdge())
+                    bottomRightRadius = m_scaledCornerRadius;
+            }
+        }
+        setBorderRadius(KDecoration3::BorderRadius(0, 0, bottomRightRadius, bottomLeftRadius));
     }
 
     //________________________________________________________________

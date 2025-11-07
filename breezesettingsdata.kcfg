@@ -35,6 +35,9 @@
         <default>false</default>
     </entry>
 
+    <entry name="RoundedCorners" type = "Bool">
+      <default>true</default>
+    </entry>
   </group>
 
   <group name="Windeco">
