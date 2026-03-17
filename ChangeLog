@@ -1,3 +1,33 @@
+V6.5
+---------
+ * Bumped the version to 6.5.
+ * Added an option for round bottom corners with no borders.
+
+V6.4
+---------
+ * Bumped the version to 6.4 and imported some changes from Breeze 6.4.0.
+ * Used `KDecoration3::snapToPixelGrid` is a few places.
+
+V6.3
+---------
+ * Bumped the version to 6.3 and imported some changes from Breeze 6.3.0.
+ * Fixed a problem in a ui file.
+ * Removed the dialog option because it never worked on Wayland, and, since KDecoration3, it doesn't work on X11 either.
+
+V6.2
+---------
+ * Bumped the version to 6.2 and imported some changes from Breeze 6.2.0.
+ * Silenced a compilation warning.
+ * Code cleanup.
+
+V6.1
+---------
+ * Bumped the version to 6.1 and imported some changes from Breeze 6.1.5.
+
+V6.0
+---------
+ * Bumped the version to 6.0 and imported some changes from Breeze 6.0.2.
+
 V5.27
 ---------
  * Bumped the version to 5.27 and imported useful changes from breeze-5.27.2.

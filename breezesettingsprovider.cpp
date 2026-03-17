@@ -22,7 +22,7 @@
 
 #include "breezeexceptionlist.h"
 
-#include <KWindowInfo>
+//#include <KWindowInfo>
 
 #include <QRegularExpression>
 #include <QTextStream>
@@ -69,49 +69,48 @@ namespace Breeze
     }
 
     //__________________________________________________________________
-    InternalSettingsPtr SettingsProvider::internalSettings( Decoration *decoration ) const
+    InternalSettingsPtr SettingsProvider::internalSettings(Decoration *decoration) const
     {
 
         QString windowTitle;
         QString windowClass;
 
-        // get the client
-        const auto client = decoration->client().toStrongRef();
+        // get the decorated window
+        const auto w = decoration->window();
 
-        foreach( auto internalSettings, m_exceptions )
+        for (auto internalSettings : std::as_const(m_exceptions))
         {
-
             // discard disabled exceptions
-            if( !internalSettings->enabled() ) continue;
+            if (!internalSettings->enabled()) continue;
 
             // discard exceptions with empty exception pattern
-            if( internalSettings->exceptionPattern().isEmpty() ) continue;
+            if (internalSettings->exceptionPattern().isEmpty()) continue;
 
-            if (internalSettings->isDialog())
+            /*if (internalSettings->isDialog())
             {
-                KWindowInfo info(client->windowId(), NET::WMWindowType);
+                KWindowInfo info(w->windowId(), NET::WMWindowType);
                 if (info.valid()
                     && info.windowType(NET::NormalMask | NET::DialogMask) != NET::Dialog) {
                     continue;
                 }
-            }
+            }*/
 
             /*
             decide which value is to be compared
             to the regular expression, based on exception type
             */
             QString value;
-            switch( internalSettings->exceptionType() )
+            switch (internalSettings->exceptionType())
             {
                 case InternalSettings::ExceptionWindowTitle:
                 {
-                    value = windowTitle.isEmpty() ? (windowTitle = client->caption()):windowTitle;
+                    value = windowTitle.isEmpty() ? (windowTitle = w->caption()):windowTitle;
                     break;
                 }
 
                 default:
                 case InternalSettings::ExceptionWindowClassName: {
-                    value = windowClass.isEmpty() ? (windowClass = client->windowClass()) : windowClass;
+                    value = windowClass.isEmpty() ? (windowClass = w->windowClass()) : windowClass;
                     break;
                 }
 
@@ -119,9 +118,10 @@ namespace Breeze
 
             // check matching
             QRegularExpression rx( internalSettings->exceptionPattern() );
-            if( rx.match( value ).hasMatch() )
-            { return internalSettings; }
-
+            if (rx.match(value).hasMatch())
+            {
+                return internalSettings;
+            }
         }
 
         return m_defaultSettings;

@@ -1,6 +1,3 @@
-#ifndef breeze_h
-#define breeze_h
-
 /*
  * Copyright 2014  Hugo Pereira Da Costa <hugo.pereira@free.fr>
  *
@@ -21,10 +18,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#pragma once
+
 #include "breezesettings.h"
 
-#include <QSharedPointer>
 #include <QList>
+#include <QSharedPointer>
 
 namespace Breeze
 {
@@ -36,7 +35,6 @@ namespace Breeze
     //* metrics
     namespace Metrics
     {
-
         //* corner radius, in units of small spacing
         static constexpr qreal Frame_FrameRadius = 2;
 
@@ -48,7 +46,6 @@ namespace Breeze
 
         // shadow dimensions (pixels)
         static constexpr int Shadow_Overlap = 3;
-
     }
 
     //* standard pen widths
@@ -70,4 +67,3 @@ namespace Breeze
     };
 }
 
-#endif

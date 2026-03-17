@@ -1,6 +1,3 @@
-#ifndef BREEZE_BUTTONS_H
-#define BREEZE_BUTTONS_H
-
 /*
 * Copyright 2014  Martin Gräßlin <mgraesslin@kde.org>
 * Copyright 2014  Hugo Pereira Da Costa <hugo.pereira@free.fr>
@@ -21,8 +18,11 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include <KDecoration2/DecorationButton>
+
+#pragma once
+
 #include "breezedecoration.h"
+#include <KDecoration3/DecorationButton>
 
 #include <QHash>
 #include <QImage>
@@ -32,7 +32,7 @@ class QVariantAnimation;
 namespace Breeze
 {
 
-    class Button : public KDecoration2::DecorationButton
+    class Button : public KDecoration3::DecorationButton
     {
         Q_OBJECT
 
@@ -45,56 +45,54 @@ namespace Breeze
         virtual ~Button() = default;
 
         //* button creation
-        static Button *create(KDecoration2::DecorationButtonType type, KDecoration2::Decoration *decoration, QObject *parent);
+        static Button *create(KDecoration3::DecorationButtonType type, KDecoration3::Decoration *decoration, QObject *parent);
 
         //* render
-        virtual void paint(QPainter *painter, const QRect &repaintRegion) override;
+        void paint(QPainter *painter, const QRectF &repaintRegion) override;
 
-        //* flag
-        enum Flag
+        //* padding
+        void setPadding(const QMargins &value)
         {
-            FlagNone,
-            FlagStandalone,
-            FlagFirstInList,
-            FlagLastInList
-        };
+            m_padding = value;
+        }
 
-        //* flag
-        void setFlag( Flag value )
-        { m_flag = value; }
+        //* left padding, for rendering
+        void setLeftPadding(qreal value)
+        {
+            m_padding.setLeft(value);
+        }
 
-        //* standalone buttons
-        bool isStandAlone() const { return m_flag == FlagStandalone; }
-
-        //* offset
-        void setOffset( const QPointF& value )
-        { m_offset = value; }
-
-        //* horizontal offset, for rendering
-        void setHorizontalOffset( qreal value )
-        { m_offset.setX( value ); }
-
-        //* vertical offset, for rendering
-        void setVerticalOffset( qreal value )
-        { m_offset.setY( value ); }
-
-        //* set icon size
-        void setIconSize( const QSize& value )
-        { m_iconSize = value; }
+        //* right padding, for rendering
+        void setRightPadding(qreal value)
+        {
+            m_padding.setRight(value);
+        }
 
         //*@name active state change animation
         //@{
-        void setOpacity( qreal value )
+        void setOpacity(qreal value)
         {
-            if( m_opacity == value ) return;
+            if (m_opacity == value) return;
             m_opacity = value;
             update();
         }
 
         qreal opacity() const
-        { return m_opacity; }
+        {
+            return m_opacity;
+        }
 
         //@}
+
+        void setPreferredSize(const QSizeF &size)
+        {
+            m_preferredSize = size;
+        }
+
+        QSizeF preferredSize() const
+        {
+            return m_preferredSize;
+        }
 
         private Q_SLOTS:
 
@@ -107,10 +105,10 @@ namespace Breeze
         private:
 
         //* private constructor
-        explicit Button(KDecoration2::DecorationButtonType type, Decoration *decoration, QObject *parent = nullptr);
+        explicit Button(KDecoration3::DecorationButtonType type, Decoration *decoration, QObject *parent = nullptr);
 
         //* draw button icon
-        void drawIcon( QPainter *) const;
+        void drawIcon(QPainter *) const;
 
         //*@name colors
         //@{
@@ -118,16 +116,14 @@ namespace Breeze
         QColor backgroundColor() const;
         //@}
 
-        Flag m_flag = FlagNone;
-
         //* active state change animation
         QVariantAnimation *m_animation;
 
-        //* vertical offset (for rendering)
-        QPointF m_offset;
+        //* padding (for rendering)
+        QMargins m_padding;
 
-        //* icon size
-        QSize m_iconSize;
+        //* implicit size
+        QSizeF m_preferredSize;
 
         //* active state change opacity
         qreal m_opacity = 0;
@@ -135,4 +131,3 @@ namespace Breeze
 
 } // namespace
 
-#endif
